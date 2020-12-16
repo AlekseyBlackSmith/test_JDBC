@@ -1,11 +1,13 @@
 package jm.task.core.jdbc.model;
 
+import jm.task.core.jdbc.service.UserServiceImpl;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Table
-public class User {
+public class User extends UserServiceImpl {
     @Id
     private Long id;
 
@@ -18,7 +20,7 @@ public class User {
     @Column
     private Byte age;
 
-    public User() {
+    public User(String name) {
 
     }
 
@@ -58,5 +60,10 @@ public class User {
 
     public void setAge(Byte age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return getId() + " " + getName() + " " + getLastName() + " " + getAge();
     }
 }
